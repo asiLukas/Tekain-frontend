@@ -1,6 +1,6 @@
 {
   "name": "kain",
-  "proxy": "https://tekain-api.herokuapp.com",
+  "proxy": "http://tekain-api.herokuapp.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
