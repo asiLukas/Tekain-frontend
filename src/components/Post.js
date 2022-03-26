@@ -96,27 +96,38 @@ const Post = React.memo(({open, dialogPost, setDialogPost, setOpen}) => {
     })
   }
 
-  let updatePost = (e, id) => {
-    e.preventDefault()
-    if (caption.caption) {
-      let form_data = new FormData()
-      form_data.append('image', image.image, image.image.name)
-      form_data.append('caption', caption.caption)
-      axios.put(`/api/p/${id}/u/`, form_data, {
-        headers: {
-          'content-type': 'multipart/form-data',
-          'Authorization': 'Bearer ' + String(authTokens.access)
-        }
-      })
-        .then(res => {
-          // window.location.reload()
+  let updatePost = (id) => {
+    if (caption.caption && image) {
+      if (!image) {
+        axios.put(`/api/p/${id}/u/`, JSON.stringify({'caption': caption.caption, 'image': null}), {
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + String(authTokens.access)
+          }
         })
-        .catch(err => console.log(err))
+          .then(res => {
+            window.location.reload()
+          })
+          .catch(err => console.log(err))
+      } else {
+        let form_data = new FormData()
+        form_data.append('image', image.image, image.image.name)
+        form_data.append('caption', caption.caption)
+        axios.put(`/api/p/${id}/u/`, form_data, {
+          headers: {
+            'content-type': 'multipart/form-data',
+            'Authorization': 'Bearer ' + String(authTokens.access)
+          }
+        })
+          .then(res => {
+            window.location.reload()
+          })
+          .catch(err => console.log(err))
+      }
     }
   }
 
-  let deletePost = (e, id) => {
-    e.preventDefault()
+  let deletePost = (id) => {
     axios.delete(`/api/p/${id}/d/`, {
       headers: {
         'content-type': 'multipart/form-data',
@@ -153,7 +164,7 @@ const Post = React.memo(({open, dialogPost, setDialogPost, setOpen}) => {
     setComment('')
 
   }
-  console.log('aha')
+
   return (
     <Dialog open={open} onClose={handleClose} maxWidth='lg'>
       <DialogTitle onClick={handleClose}>
@@ -166,13 +177,13 @@ const Post = React.memo(({open, dialogPost, setDialogPost, setOpen}) => {
               <div style={{display: 'flex', flex: '1 1 0', justifyContent: 'center'}}>
                 <UpdateDeleteForm
                   value='update'
-                  handleSubmit={() => updatePost(event, dialogPost?.post.id)}
+                  handleSubmit={() => updatePost(dialogPost?.post.id)}
                   handleChange={handleChange}
                   handleImageChange={handleImageChange}
                 />
                 <UpdateDeleteForm
                   value='delete'
-                  handleSubmit={() => deletePost(event, dialogPost?.post.id)}
+                  handleSubmit={() => deletePost(dialogPost?.post.id)}
                   handleChange={handleChange}
                   handleImageChange={handleImageChange}
                 />
