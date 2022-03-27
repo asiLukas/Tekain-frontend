@@ -100,7 +100,7 @@ const Navbar = ({toggle}) => {
               {
                 user ?
                   <NavLinks to='login'>
-                  <Button onClick={() => {logoutUser();window.location.reload()}} style={{textTransform: 'lowercase'}} color='secondary'>Logout</Button>
+                  <Button onClick={logoutUser} style={{textTransform: 'lowercase'}} color='secondary'>Logout</Button>
                   </NavLinks>
                 :
                   <NavLinks to='register'>
