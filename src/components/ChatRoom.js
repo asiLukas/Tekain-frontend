@@ -59,7 +59,7 @@ const ChatRoom = React.memo(({roomName, btnStyle}) => {
       };
     }
     if (closed == false) {
-      console.log('aha')
+      // console.log('aha')
       window.addEventListener('beforeunload', () => {
         if (closed == false) {
           console.log('disconnect')
@@ -98,7 +98,7 @@ const ChatRoom = React.memo(({roomName, btnStyle}) => {
           }
 
           if(data.users) {
-            console.log(data.users)
+            // console.log(data.users)
             setCurrentUsers(data.users)
           }
 
