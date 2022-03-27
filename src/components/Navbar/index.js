@@ -49,7 +49,7 @@ const Navbar = ({toggle}) => {
           let form_data = new FormData();
           form_data.append('image', image.image, image.image.name);
           form_data.append('caption', caption.caption);
-          axios.post('/api/p/n/', form_data, {
+          axios.post('https://tekain-api.herokuapp.com/api/p/n/', form_data, {
             headers: {
               'content-type': 'multipart/form-data',
               'Authorization': 'Bearer ' + String(authTokens.access)
