@@ -48,7 +48,7 @@ const ChatRoom = React.memo(({roomName, btnStyle}) => {
   useEffect(() => {
     scrollToBottom()
     if (initLoad) {
-      client = new W3CWebSocket('ws://tekain-api.herokuapp.com/ws/chat/' + roomName + '/')
+      client = new W3CWebSocket('wss://tekain-api.herokuapp.com/ws/chat/' + roomName + '/')
       client.onopen = () => {
          client.send(JSON.stringify({
            type: 'get_user',

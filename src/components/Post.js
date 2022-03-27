@@ -99,7 +99,7 @@ const Post = React.memo(({open, dialogPost, setDialogPost, setOpen}) => {
   let updatePost = (id) => {
     if (caption.caption && image) {
       if (!image) {
-        axios.put(`/api/p/${id}/u/`, JSON.stringify({'caption': caption.caption, 'image': null}), {
+        axios.put(`https://tekain-api.herokuapp.com/api/p/${id}/u/`, JSON.stringify({'caption': caption.caption, 'image': null}), {
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + String(authTokens.access)
@@ -113,7 +113,7 @@ const Post = React.memo(({open, dialogPost, setDialogPost, setOpen}) => {
         let form_data = new FormData()
         form_data.append('image', image.image, image.image.name)
         form_data.append('caption', caption.caption)
-        axios.put(`/api/p/${id}/u/`, form_data, {
+        axios.put(`https://tekain-api.herokuapp.com/api/p/${id}/u/`, form_data, {
           headers: {
             'content-type': 'multipart/form-data',
             'Authorization': 'Bearer ' + String(authTokens.access)
@@ -128,7 +128,7 @@ const Post = React.memo(({open, dialogPost, setDialogPost, setOpen}) => {
   }
 
   let deletePost = (id) => {
-    axios.delete(`/api/p/${id}/d/`, {
+    axios.delete(`https://tekain-api.herokuapp.com/api/p/${id}/d/`, {
       headers: {
         'content-type': 'multipart/form-data',
         'Authorization': 'Bearer ' + String(authTokens.access)
@@ -144,7 +144,7 @@ const Post = React.memo(({open, dialogPost, setDialogPost, setOpen}) => {
   }
 
   let addComment = async (id) => {
-    let response = await fetch(`/api/p/${id}/`, {
+    let response = await fetch(`https://tekain-api.herokuapp.com/api/p/${id}/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

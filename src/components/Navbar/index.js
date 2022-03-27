@@ -34,7 +34,7 @@ const Navbar = ({toggle}) => {
       console.log('createpost')
       if (caption.caption) {
         if (!image) {
-          axios.post('/api/p/n/', JSON.stringify({'caption': caption.caption, 'image': null}), {
+          axios.post('https://tekain-api.herokuapp.com/api/p/n/', JSON.stringify({'caption': caption.caption, 'image': null}), {
             headers: {
               'content-type': 'application/json',
               'Authorization': 'Bearer ' + String(authTokens.access)

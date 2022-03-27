@@ -34,7 +34,7 @@ const SideBar = ({isOpen, toggle}) => {
         form_data.append('image', image.image, image.image.name);
         form_data.append('caption', caption.caption);
         console.log(form_data.image)
-        axios.post('/api/p/n/', form_data, {
+        axios.post('https://tekain-api.herokuapp.com/api/p/n/', form_data, {
           headers: {
             'content-type': 'multipart/form-data',
             'Authorization': 'Bearer ' + String(authTokens.access)

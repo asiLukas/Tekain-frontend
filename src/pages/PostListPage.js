@@ -55,7 +55,7 @@ const PostListPage = React.memo(() => {
   }
 
   let getPosts = async () => {
-    let response = await fetch('/api/p/', {
+    let response = await fetch('https://tekain-api.herokuapp.com/api/p/', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const PostListPage = React.memo(() => {
   }
 
   let getPost = async (id) => {
-    let response = await fetch(`/api/p/${id}/`, {
+    let response = await fetch(`https://tekain-api.herokuapp.com/api/p/${id}/`, {
       method: 'GET',
       headers: {
         'content-type': 'multipart/form-data',

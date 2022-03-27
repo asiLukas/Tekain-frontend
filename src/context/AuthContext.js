@@ -82,7 +82,7 @@ export const AuthProvider =  ({children}) => {
   }
 
   let deleteUser = async () => {
-    let response = await fetch('/api/user/delete/', {
+    let response = await fetch('https://tekain-api.herokuapp.com/api/user/delete/', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
