@@ -15,6 +15,7 @@ import RegisterPage from './pages/RegisterPage'
 import TempUserPage from './pages/TempUserPage'
 
 import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 
 function App() {
@@ -32,6 +33,10 @@ function App() {
         <SideBar isOpen={isOpen} toggle={toggleNav}/>
         <Navbar toggle={toggleNav}/>
         <Container maxWidth='lg' style={{marginTop: '10px'}}>
+        <Typography variant="body2" color="text.secondary" align="center" >
+          <b>early release</b>: not meant for production<br/>
+          <b>known issues</b>: ugly post view and chatroom design, user displayer in chatroom doesn't work on mobile, problems with commenting on safari, several security issues
+        </Typography>
         {
           !user ?
           <Routes>

@@ -12,7 +12,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions'
 import styled from 'styled-components'
-import Typography from '@mui/material/Typography'
 
 import UpdateDeleteForm from '../components/UpdateDeleteForm'
 
@@ -89,9 +88,6 @@ const PostListPage = React.memo(() => {
 
   return (
     <div className='content'>
-      <Typography variant="body2" color="text.secondary" align="center" >
-        known issues: ugly post view and chatroom design, user displayer in chatroom doesn't work on safari
-      </Typography>
       {posts.map((post, index) => (
         <Paper elevation={10} key={index} style={
             {
