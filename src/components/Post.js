@@ -192,7 +192,7 @@ const Post = React.memo(({open, dialogPost, setDialogPost, setOpen}) => {
           }
       </DialogActions>
       <DialogContent>
-        <StyledImage onClick={handleClose} src={dialogPost?.post.image} alt={``}/>
+        <StyledImage onClick={handleClose} src={'https://tekain-api.herokuapp.com' + dialogPost?.post.image} alt={``}/>
           <CommentSection
             scroll='body'
             elevation={0}
