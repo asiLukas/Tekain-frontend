@@ -30,7 +30,7 @@ export const AuthProvider =  ({children}) => {
     if (!password) {
       password = e.target.password.value;
     }
-    let response = await fetch('/api/token/', {
+    let response = await fetch('https://tekain-api.herokuapp.com/api/token/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ export const AuthProvider =  ({children}) => {
       password = uuid.v4();
       email = uuid.v4() + '@gmail.com'
     }
-    let response = await fetch('/api/user/register/', {
+    let response = await fetch('https://tekain-api.herokuapp.com/api/user/register/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -93,7 +93,7 @@ export const AuthProvider =  ({children}) => {
 
   let updateToken = async () => {
     if (user) {
-      let response = await fetch('/api/token/refresh/', {
+      let response = await fetch('https://tekain-api.herokuapp.com/api/token/refresh/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
