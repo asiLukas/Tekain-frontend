@@ -102,7 +102,7 @@ const PostListPage = React.memo(() => {
             }
         }>
           <Link onClick={() => handleOpen(post?.id)} style={{textDecoration: 'none', cursor: 'pointer'}}>
-          <LazyImage src={'https://tekain-api.herokuapp.com' + post.image} alt=''/>
+          <LazyImage src={post.image !== null ? 'https://tekain-api.herokuapp.com' + post.image : post.image} alt=''/>
           <Caption>{post.caption}</Caption>
           </Link>
           <Post
