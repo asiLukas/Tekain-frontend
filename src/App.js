@@ -35,7 +35,7 @@ function App() {
         <Container maxWidth='lg' style={{marginTop: '10px'}}>
         <Typography variant="body2" color="text.secondary" align="center" >
           <b>early release</b>: not meant for production<br/>
-          <b>known issues</b>: ugly post view and chatroom design, user displayer in chatroom doesn't work on mobile, problems with commenting on safari, several security issues
+          <b>known issues</b>: ugly post view and chatroom design, user displayer in chatroom doesn't work on mobile, problems with commenting on safari, several security issues, weak error handling<br/>
         </Typography>
         {
           !user ?
