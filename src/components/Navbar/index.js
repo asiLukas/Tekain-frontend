@@ -69,7 +69,7 @@ const Navbar = ({toggle}) => {
       <Nav>
         <NavbarContainer>
 
-          <NavLogo to='/'>Tekain</NavLogo>
+            <NavLogo href='/' to='/'>Tekain</NavLogo>
             <MobileIcon onClick={toggle}>
               <FaBars />
             </MobileIcon>
@@ -100,7 +100,7 @@ const Navbar = ({toggle}) => {
               {
                 user ?
                   <NavLinks to='login'>
-                    <Button onClick={logoutUser} style={{textTransform: 'lowercase'}} color='secondary'>Logout</Button>
+                  <Button onClick={() => {logoutUser();window.location.reload()}} style={{textTransform: 'lowercase'}} color='secondary'>Logout</Button>
                   </NavLinks>
                 :
                   <NavLinks to='register'>

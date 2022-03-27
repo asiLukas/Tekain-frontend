@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext, useRef, useMemo, useCallback} from 'react'
 import {w3cwebsocket as W3CWebSocket} from 'websocket'
 
+import styled from 'styled-components'
 import { Grid, TextField, Button, Paper, CardHeader, Card, Avatar} from '@mui/material'
 import AuthContext from '../context/AuthContext'
 
@@ -9,6 +10,14 @@ let perfCount = 0;
 let client = null
 let initLoad = true;
 let closed = false;
+
+const UsersP = styled.p`
+  @media screen and (max-width: 600px) {
+    inline-size: 35px;
+    overflow-wrap: break-word;
+  }
+
+`
 
 const ChatRoom = React.memo(({roomName, btnStyle}) => {
 
@@ -58,22 +67,31 @@ const ChatRoom = React.memo(({roomName, btnStyle}) => {
          }))
       };
     }
-    if (closed == false) {
-      // console.log('aha')
-      window.addEventListener('beforeunload', () => {
-        if (closed == false) {
-          console.log('disconnect')
-          closed = true;
-          client.send(JSON.stringify({
-            type: 'get_user',
-            message: 'disconnect',
-            username: user.username,
-            user_id: user.user_id,
-          }))
-        }
-      })
+    window.onbeforeunload = function (e) {
+    var e = e || window.event;
 
+    // For IE and Firefox
+    if (e) {
+      e.returnValue = 'Leaving the page';
     }
+
+    // For Safari
+    return 'Leaving the page';
+    }
+
+  window.addEventListener('beforeunload', () => {
+    console.log('ahoj')
+    if (closed == false) {
+      console.log('disconnect')
+      closed = true;
+      client.send(JSON.stringify({
+        type: 'get_user',
+        message: 'disconnect',
+        username: user.username,
+        user_id: user.user_id,
+      }))
+    }
+  })
 
     client.onmessage = (e) => {
       const data = JSON.parse(e.data);
@@ -117,7 +135,7 @@ const ChatRoom = React.memo(({roomName, btnStyle}) => {
       <p>current users: </p>
       {
         currentUsers?.map((user, index) => (
-            <p key={index} style={{paddingLeft: '10px'}}>{user}</p>
+            <UsersP key={index} style={{paddingLeft: '10px'}}>{user}</UsersP>
         ))
       }
     </div>

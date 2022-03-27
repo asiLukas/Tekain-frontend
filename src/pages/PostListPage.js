@@ -90,7 +90,7 @@ const PostListPage = React.memo(() => {
   return (
     <div className='content'>
       <Typography variant="body2" color="text.secondary" align="center" >
-        known issues: ugly post view and chatroom design, sometimes last user that exits chatroom appears as if he was still joined, weird issues with safari
+        known issues: ugly post view and chatroom design, user displayer in chatroom doesn't work on safari
       </Typography>
       {posts.map((post, index) => (
         <Paper elevation={10} key={index} style={
