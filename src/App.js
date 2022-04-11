@@ -36,6 +36,7 @@ function App() {
         <Typography variant="body2" color="text.secondary" align="center" >
           <b>early release</b>: not meant for production<br/>
           <b>known issues</b>: ugly post view and chatroom design, user displayer in chatroom doesn't work on mobile, problems with commenting on safari, several security issues, weak error handling<br/>
+          <b>important note: when logging in or registering, it may take a minute, due to the server having to load</b> (I'm not gonna pay any fees for the server to run all the time)
         </Typography>
         {
           !user ?
